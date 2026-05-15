@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(54, 54, 54);
+}
+
+.caja {
+    background-color: white;
+    width:75%;
+    position: Right;
+    align-items: center;
+}
+
+.parfff {
+    background-color: lightgray;
+    width: 45%;
+    position: right;
+}
+
+h1 {
+    font-family: cursive;
+    color: red;
+    font-size: 10px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
+    font-size: 7px;
+    text-align: left;
+}
+
+.lrem {
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(234, 0, 255);
+    font-size: 13px;
+    text-align: right;
+}
+
+.Tutmasl {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 255, 17);
+    font-size: 50px;
+    text-align: center;
+}
+
+#equipos{
+    width: 30%;
+    background-color: white;
+    margin-left: auto;
+}
+
+#america{
+            color: red;
+        }
+        #millonarios{
+            color: blue;
+        }
+        #medellin{
+            color: rgb(130, 5, 5);
+        }
+        #cali{
+            color: rgb(5, 165, 43);
+        }
+        #envigado{
+            color: orange;
+        }
