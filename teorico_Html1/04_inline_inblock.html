@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloque VS Linea - Guia Visual</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+            color : #333;
+        }
+        /* Estilo para elementos de bloque */
+        .block-element {
+           background-color: #ffe0e0;
+           border: 2px solid #ff5f5f;
+           margin: 10px 0;
+           padding: 10px;
+        }
+
+
+        /* Estilo para elementos en línea */
+        .inline {
+            background-color: lightcoral;
+            border: 2px solid #5fb2ff;
+            padding: 2px 5px;
+        }
+        hr{border: 0;
+            border-top: 1px solid #ccc;
+            margin: 40px 0;}
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guia de flujo HTML</h1>
+    <section>
+        <h2>1.Elementos de bloque(<code>display: block</code>)</h2>
+        <p>Los elementos de bloque ocupan<strong> todo el ancho disponible</strong> y comienzan en una nueva línea.</p>
+
+        <div class="block-element">Soy un <code>&lt;div&gt;</code>, (bloque1)</div>
+        <div class="block-element">Soy otro <code>&lt;div&gt;</code>, (bloque2)</div>
+
+        <p><em>conclusion</em> Siempre empiezan una línea nueva.</p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>2.Elementos en línea(<code>display: inline</code>)</h2>
+        <p>Los elementos en línea no<strong> comienzan en una nueva línea</strong> y solo ocupan el espacio necesario.</p>
+        <p>
+        en este párrafo tenemos
+        <span class="inline">span azul</span>
+        segundo inmediatamente
+        <span class="inline">segundo span</span>
+        </p>
+
+        <p><em>conclusion</em> No comienzan una nueva línea.</p>
+    </section>
+
+    <section>
+        <h2>3. comparación visual final</h2>
+        <div class="block-element">
+        soy un bloque.si intentas poner un 
+        <span class="inline">Inline</span>
+        aquí,yo lo contengo ,pero sigo siendo una caja grande
+        </div>
+
+        <p>
+            texto normal...
+            <span class="inline">span en línea</span>
+            <div class="block-element">cuidado soy un bloque apareciendo de la nada .He forzado un salto de línea.  </div>
+            ... el texto continua aquí, después del bloque.
+        </p>
+       </section>
+</body>
+</html>
