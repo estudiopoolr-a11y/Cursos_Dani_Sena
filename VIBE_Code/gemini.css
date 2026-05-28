@@ -1,0 +1,49 @@
+ /* Contenedor principal que envuelve todo el recibo */
+  .recibo {
+    background-color: #b2e2e2; /* Da el color de fondo azul/verde claro similar al del papel */
+    border: 1px solid #000; /* Crea un borde negro delgado alrededor de todo el cuadro */
+    padding: 20px; /* Agrega espacio interno para que el texto no quede pegado a los bordes */
+    font-family: sans-serif; /* Usa un tipo de letra básico y sin adornos para mayor claridad */
+    max-width: 600px; /* Limita el ancho máximo del recibo para que no se estire demasiado */
+    font-size: 14px; /* Define el tamaño general del texto */
+  }
+
+  /* Estilos para la cabecera (logo, categorías y teléfonos) */
+  header {
+    text-align: center; /* Centra todo el texto dentro de la cabecera */
+    border-bottom: 2px solid #000; /* Dibuja una línea separadora gruesa debajo de la cabecera */
+    padding-bottom: 10px; /* Da un poco de espacio entre el texto y la línea separadora */
+  }
+
+  /* Estilo para el nombre principal de la empresa */
+  h1 {
+    color: #006633; /* Cambia el color del título a verde oscuro */
+    margin: 0 0 5px 0; /* Elimina márgenes extra pero deja un pequeño espacio abajo */
+  }
+
+  /* Contenedor de la información del cliente */
+  .datos p {
+    margin: 8px 0; /* Separa ligeramente cada línea de texto (arriba y abajo) */
+  }
+
+  /* Estilos principales para la tabla (Descripción y Total) */
+  table {
+    width: 100%; /* Hace que la tabla ocupe todo el ancho del contenedor */
+    border-collapse: collapse; /* Fusiona los bordes de las celdas para que se vean como una sola línea */
+    margin-top: 15px; /* Separa la tabla de los datos del cliente que están arriba */
+  }
+
+  /* Estilos para las celdas de la tabla (encabezados y datos) */
+  th, td {
+    border: 1px solid #000; /* Le pone un borde negro a cada celda individual */
+    padding: 10px; /* Da espacio interno para que el texto respire dentro de la celda */
+    text-align: left; /* Asegura que el texto se alinee a la izquierda */
+  }
+
+  /* Estilo específico para la zona de las firmas */
+  .firmas {
+    display: flex; /* Activa flexbox para colocar elementos en fila (uno al lado del otro) */
+    justify-content: space-between; /* Empuja una firma a la izquierda y la otra a la derecha */
+    margin-top: 50px; /* Crea un espacio grande arriba para que la persona pueda firmar físicamente */
+    text-align: center; /* Centra el texto ("Firma del...") debajo de su respectiva línea */
+  }

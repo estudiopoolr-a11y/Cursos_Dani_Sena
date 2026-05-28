@@ -1,0 +1,363 @@
+/* ── VARIABLES GLOBALES ──────────────────────────────────────────
+   Define los colores del recibo en un solo lugar.
+   Así si quieres cambiar un color, solo lo tocas aquí.        */
+:root {
+  --g: #1a7a3c;   /* verde del logo */
+  --b: #1a4fa0;   /* azul del logo y bordes */
+  --p: #d4eeec;   /* color papel aguamarine (fondo) */
+  --r: #cc2200;   /* rojo para el número de recibo */
+}
+
+/* ── RESET BÁSICO ────────────────────────────────────────────────
+   Elimina márgenes y paddings por defecto del navegador.
+   box-sizing:border-box hace que el padding no agrande los elementos.
+   Aplica la fuente principal a todo el documento.              */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+/* ── FONDO Y CENTRADO DE PÁGINA ─────────────────────────────────
+   Pone un fondo gris, centra el recibo horizontal y verticalmente
+   usando CSS Grid con place-items:center.                      */
+body {
+  background: #ccc;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ── TARJETA PRINCIPAL DEL RECIBO ───────────────────────────────
+   Es el contenedor del recibo completo.
+   overflow:hidden evita que elementos hijos se salgan del borde. */
+.recibo {
+  background: var(--p);
+  width: 680px;
+  border: 2px solid var(--g);
+  box-shadow: 4px 4px 16px #0004;
+  overflow: hidden;
+}
+
+/* ── FRANJA PUNTEADA SUPERIOR ───────────────────────────────────
+   Usa ::before para crear la línea roja de puntos sin HTML extra.
+   repeating-linear-gradient dibuja el patrón de rayas rojo/transparente. */
+.recibo::before {
+  content: '';
+  display: block;
+  height: 9px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--r) 0 12px,
+    transparent 12px 20px
+  );
+  border-bottom: 1px solid var(--g);
+}
+
+/* ── SECCIÓN GENÉRICA ───────────────────────────────────────────
+   Padding uniforme para las secciones internas del recibo.     */
+section {
+  padding: 12px 16px;
+}
+
+/* ── ENCABEZADO (logo + checkboxes + número) ────────────────────
+   Flexbox pone el logo a la izquierda y los controles a la derecha. */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 16px 0;
+}
+
+/* ── TÍTULO DEL LOGO ────────────────────────────────────────────
+   Oswald en negrita para imitar el estilo del recibo original. */
+.brand h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: var(--g);
+  line-height: 1;
+}
+
+/* Cambia el color de "BLUE" a azul dentro del mismo h1 */
+.brand h1 span { color: var(--b); }
+
+/* Subtítulo "aguamarine" en cursiva con letras separadas */
+.brand em {
+  display: block;
+  color: #1a8a7a;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin: 2px 0;
+}
+
+/* Tagline pequeño debajo del subtítulo */
+.brand small {
+  font-size: 9px;
+  color: #0a2a50;
+  display: block;
+}
+
+/* Línea del teléfono */
+.brand p {
+  font-size: 11px;
+  color: var(--b);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ── BLOQUE DERECHO (checkboxes + número) ───────────────────────
+   Apila los elementos en columna alineados a la derecha.       */
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+/* Grid de 2 columnas para los 4 checkboxes de servicios */
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+}
+
+/* Estilo de cada etiqueta de servicio con su checkbox */
+.checks label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--b);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Tamaño del checkbox nativo del navegador */
+.checks input {
+  width: 12px;
+  height: 12px;
+  accent-color: var(--b); /* colorea el check al marcarlo */
+}
+
+/* ── CAJA DEL NÚMERO DE RECIBO ──────────────────────────────────
+   Borde azul, texto centrado, número grande en rojo.          */
+.num {
+  border: 2px solid var(--b);
+  padding: 5px 12px;
+  text-align: center;
+}
+
+.num b {
+  display: block;
+  font-size: 10px;
+  color: var(--b);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.num span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  color: var(--r);
+  letter-spacing: 3px;
+}
+
+/* ── LÍNEA DIVISORIA ─────────────────────────────────────────────
+   Separador horizontal azul entre el encabezado y los campos.  */
+hr {
+  border: none;
+  border-top: 1.5px solid var(--b);
+  margin: 8px 16px;
+}
+
+/* ── ÁREA DE CAMPOS ──────────────────────────────────────────────
+   Contenedor con espacio entre cada fila de campos.            */
+.fields {
+  padding: 0 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ── FILAS CON GRIDS ─────────────────────────────────────────────
+   .row es la base; .r2 / .r3 / .r4 definen cuántas columnas.  */
+.row { display: grid; gap: 10px; align-items: end; }
+.r2  { grid-template-columns: 1fr 1fr; }
+.r3  { grid-template-columns: 1fr 1fr 1fr; }
+.r4  { grid-template-columns: 2fr auto; } /* campo grande + bloque de fechas */
+
+/* ── CAMPO INDIVIDUAL (label + línea) ───────────────────────────
+   Flexbox alinea la etiqueta con la línea de escritura.        */
+.f {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.f label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--b);
+  text-transform: uppercase;
+  white-space: nowrap; /* evita que la etiqueta se parta en dos líneas */
+}
+
+/* Línea de escritura: borde inferior simula un campo de formulario */
+.f .line {
+  flex: 1;
+  border-bottom: 1px solid var(--b);
+  height: 18px;
+  min-width: 30px;
+}
+
+/* ── BLOQUE DE FECHAS ───────────────────────────────────────────
+   Contiene las dos fechas (inicio / finalización) con cajitas.  */
+.fechas {
+  border: 1.5px solid var(--b);
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fechas .frow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fechas .frow label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--b);
+  text-transform: uppercase;
+  width: 75px; /* ancho fijo para alinear las cajitas */
+}
+
+/* Contenedor de las tres cajitas por fecha */
+.boxes { display: flex; gap: 2px; }
+
+/* Cada cajita blanca para escribir día / mes / año */
+.boxes span {
+  width: 22px;
+  height: 20px;
+  border: 1px solid var(--b);
+  background: #fff;
+  display: inline-block;
+}
+
+/* ── TÍTULO DE LA TABLA DE DESCRIPCIÓN ─────────────────────────
+   Banda azul claro con el texto "DESCRIPCIÓN" centrado.        */
+.thead {
+  background: #b8e0dd;
+  text-align: center;
+  padding: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  color: var(--b);
+  letter-spacing: 2px;
+  border: 1.5px solid var(--b);
+  border-bottom: none; /* se fusiona visualmente con la tabla */
+}
+
+/* ── TABLA DE ÍTEMS ─────────────────────────────────────────────
+   border-collapse:collapse une los bordes de celdas adyacentes. */
+table { width: 100%; border-collapse: collapse; }
+table, th, td { border: 1px solid var(--b); }
+
+th {
+  background: #b8e0dd;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--b);
+  text-transform: uppercase;
+  padding: 3px 6px;
+  letter-spacing: .4px;
+}
+
+td {
+  height: 22px;
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+/* Alinea a la derecha todas las columnas numéricas */
+td:not(:first-child),
+th:not(:first-child) { text-align: right; }
+
+/* ── FILA DE TOTAL ───────────────────────────────────────────────
+   Barra debajo de la tabla con el total final del recibo.      */
+.total-row {
+  display: flex;
+  border: 1.5px solid var(--b);
+  border-top: none;
+}
+
+.total-row span {
+  padding: 5px 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  color: var(--b);
+  border-right: 1px solid var(--b);
+}
+
+/* Celda que ocupa el espacio sobrante para escribir el monto */
+.total-row .amt { flex: 1; }
+
+/* ── OBSERVACIONES ───────────────────────────────────────────────
+   Caja con título y área de texto libre.                       */
+.obs {
+  border: 1.5px solid var(--b);
+  margin: 8px 16px 0;
+}
+
+/* Encabezado compartido para Observaciones y Firmas */
+.obs b, .sigs b {
+  display: block;
+  background: #b8e0dd;
+  border-bottom: 1px solid var(--b);
+  padding: 3px 8px;
+  font-size: 10px;
+  color: var(--b);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Espacio vacío para escribir las observaciones */
+.obs p { height: 50px; }
+
+/* ── FIRMAS ──────────────────────────────────────────────────────
+   Dos columnas iguales para firma del instructor y del usuario. */
+.sigs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--b);
+  border-top: 1px solid var(--b);
+  margin: 0 16px 14px;
+}
+
+.sig {
+  padding: 10px 14px 6px;
+  border-right: 1px solid var(--b);
+}
+
+/* Elimina el borde derecho del último bloque para no duplicarlo */
+.sig:last-child { border-right: none; }
+
+/* Línea horizontal sobre la que se firma */
+.sig hr {
+  border-top: 1px solid var(--b);
+  margin: 30px 0 5px;
+}
+
+/* Etiqueta debajo de la línea de firma */
+.sig p {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--b);
+  text-transform: uppercase;
+  text-align: center;
+}

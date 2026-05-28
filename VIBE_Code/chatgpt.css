@@ -1,0 +1,77 @@
+/* hoja completa */
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#eee;
+    margin:0;
+    font-family:Arial;
+}
+
+/* recibo azul */
+.recibo{
+    width:720px;
+    background:#c9f3f3;
+    border:2px solid #5aa;
+    padding:15px;
+    color:#277;
+    transform:none; /* gira igual que la foto */
+}
+
+/* texto arriba */
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    font-size:12px;
+}
+
+/* logo */
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#3a9;
+}
+
+/* cajas pequeñas */
+.box{
+    border:1px solid #5aa;
+    height:25px;
+    margin-top:3px;
+}
+
+/* filas */
+.row{
+    display:flex;
+    gap:10px;
+    margin:8px 0;
+}
+
+/* líneas de escribir */
+.line{
+    flex:1;
+    border-bottom:1px solid #5aa;
+}
+
+/* cuadro descripción */
+.desc{
+    border:1px solid #5aa;
+    height:160px;
+    margin-top:10px;
+}
+
+/* observaciones */
+.obs{
+    border:1px solid #5aa;
+    height:40px;
+    margin-top:10px;
+}
+
+/* firmas */
+.firmas{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    font-size:12px;
+}
